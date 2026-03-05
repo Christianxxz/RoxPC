@@ -224,3 +224,273 @@ body {
   height: 75px;
   margin-bottom: 10px;
 }
+
+/* SECTION DESTAQUES */
+.destaques-section {
+  text-align: center;
+  background: linear-gradient(to bottom, #231936, #1a1919);
+  padding: 100px 0 160px 0;
+  border-top: 3px solid #9F5FFF;
+  box-shadow: inset 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.title-destaques {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+/* GRID IGUAL CATEGORIAS */
+.destaques {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-content: center;
+  padding: 0px 100px;
+}
+
+/* CARD IGUAL CATEGORY-CARD */
+.card-destaques {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* começa do topo */
+  
+  min-height: 380px; /* altura maior */
+  border: 2px solid #9a44cc;
+  border-radius: 14px;
+  padding: 30px 25px;
+  
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.5px;
+}
+
+/* Nome produto */
+.card-destaques h4 {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #9F5FFF;
+  font-weight: 500;
+}
+
+.card-destaques span {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.card-destaques p {
+  font-size: 13px;
+  color: #9e9e9e;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Hover igual categorias */
+.card-destaques:hover {
+  border-color: #000000;
+  background-color: #5f28b3;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(159, 95, 255, 0.25);
+}
+
+/* Wrapper do ícone */
+.desq-wrapper {
+  background: linear-gradient(135deg, #3b1f5c, #5f28b3);
+  box-shadow: 0 0 15px rgba(159, 95, 255, 0.3);
+  padding: 12px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desq-icon {
+  width: 120px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* ================= PROMOÇÃO ================= */
+
+.card-destaques {
+    position: relative;
+}
+
+/* Badge de desconto */
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff004c;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Área de preço */
+.price-area {
+  margin-top: auto; /* empurra preço para baixo */
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Preço antigo */
+.old-price {
+    font-size: 14px;
+    color: #9e9e9e;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+}
+
+/* Preço novo */
+.new-price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #00ff88;
+}
+
+/* Efeito especial quando for promoção */
+.card-destaques.promo {
+    border: 2px solid #ff004c;
+    box-shadow: 0 10px 30px rgba(255, 0, 76, 0.25);
+}
+
+/* ================= HERO 2 ================= */
+
+.hero2 {
+    margin-top: 80px;
+    padding: 80px 8%;
+    text-align: center;
+    background: linear-gradient(135deg, #7c3aed, #4c1d95);
+    color: #fff;
+    border-radius: 20px;
+    margin-left: 8%;
+    margin-right: 8%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de brilho moderno */
+.hero2::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+}
+
+.hero2::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    bottom: -80px;
+    left: -80px;
+}
+
+.hero2 h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero2 p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+/* Botão reaproveitando estilo */
+.hero2 .btn-hero {
+    display: inline-block;
+    padding: 14px 35px;
+    background: #fff;
+    color: #4c1d95;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+.hero2 .btn-hero:hover {
+    background: #ede9fe;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+.footer {
+    background: #111111;
+    border-top: 3px solid #9F5FFF;
+    padding: 60px 100px 30px 100px;
+    margin-top: 80px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+}
+
+.footer-column h3 {
+    color: #9F5FFF;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-column a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #777;
+}
