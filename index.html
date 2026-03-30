@@ -5,237 +5,298 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoxPC</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="icons/logo.png" type="image/png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rox: "#9F5FFF",
+                        roxDark: "#231936",
+                        roxBg: "#1a1919",
+                        roxCard: "#341644"
+                    }
+                }
+            }
+        }
+    </script>
+
 </head>
 
-<body>
+<body class="bg-roxBg text-white font-sans">
 
-    <nav class="nav-bar">
-        <div class="logo-area">
-            <img src="icons/logo.png" alt="Logo" class="logo-img">
-            <span class="logo-text">RoxPC</span>
+    <!-- NAVBAR -->
+    <nav class="flex justify-between items-center bg-[#111] px-10 py-8 border-b-2 border-rox">
+
+        <div class="flex items-center gap-3">
+            <img src="icons/logo.png" class="w-[85px]">
+            <span class="text-rox text-2xl font-bold">RoxPC</span>
         </div>
 
-        <div class="search-bar">
-            <input type="text" placeholder=" Buscar Produtos...">
+        <div class="flex items-center bg-[#1a1a1a] px-3 py-1 rounded-full border border-rox">
+            <input class="bg-transparent outline-none text-white px-2 w-[230px]" placeholder="Buscar Produtos...">
+            <button class="bg-rox px-4 py-2 rounded-full hover:bg-purple-400 transition">
+                <img src="icons/lupa.png" class="hover:text-purple-900 w-8 invert cursor-pointer">
+            </button>
         </div>
 
-        <ul class="menu">
-            <li><a href="#">Processadores</a></li>
-            <li><a href="#">Placas de Vídeo</a></li>
-            <li><a href="#">Memória RAM</a></li>
-            <li><a href="#">SSD</a></li>
+        <ul class="flex gap-5">
+            <li><a href="#" class="hover:text-purple-700">Processadores</a></li>
+            <li><a href="#" class="hover:text-purple-700">Placas de Vídeo</a></li>
+            <li><a href="#" class="hover:text-purple-700">Memória RAM</a></li>
+            <li><a href="#" class="hover:text-purple-700">SSD</a></li>
         </ul>
 
-        <div class="icons">
-            <a href="#"><img src="icons/usuario.png" alt="Usuário"></a>
-            <a href="#"><img src="icons/carrinho.png" alt="Carrinho"></a>
+        <div class="flex gap-4">
+            <img src="icons/usuario.png" class="w-8 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad]">
+            <img src="icons/carrinho.png" class="w-8 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad]">
         </div>
+
     </nav>
 
+    <!-- HERO -->
+    <section class="text-center py-16 bg-roxCard">
+        <h1
+            class="text-5xl font-bold bg-gradient-to-r from-[#513e75] via-[#ad0ace] to-[#9900ff] bg-clip-text text-transparent">
+            Monte seu PC dos Sonhos
+        </h1>
 
-    <section class="hero">
-        <h1>Monte seu PC dos Sonhos</h1>
-        <p>As melhores peças e melhores componentes para o seu PC com a melhor qualidade e preço</p>
-        <a href="#" class="btn-hero">Ver produtos</a>
+        <p class="text-gray-400 text-xl max-w-xl mx-auto mt-4">
+            As melhores peças e melhores componentes para o seu PC com a melhor qualidade e preço
+        </p>
+
+        <a href="#"
+            class="inline-block mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-[#36098a] via-[#ae08cf] to-[#9900ff] hover:scale-105 transition">
+            Ver produtos
+        </a>
     </section>
 
+    <!-- CATEGORIAS -->
+    <!-- CATEGORIAS -->
+    <section class="text-center py-24 bg-gradient-to-b from-roxCard to-roxDark border-t-2 border-rox">
+        <h1 class="text-3xl mb-10">Categorias</h1>
 
-    <!-- Seção das categorias -->
+        <div class="grid grid-cols-4 gap-10 px-24">
 
-    <section class="categories-section">
-        <h1 class="categories-title">Categorias</h1>
-
-        <div class="categories">
-
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/CPU.png" alt="Processadores" class="category-icon">
+            <!-- PROCESSADORES -->
+            <div onclick="location.href='processadores.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/CPU.png" class="w-[75px]">
                 </div>
-                <span>Processadores</span>
-                <p>Intel & AMD</p>
+                <span class="text-xl font-bold">Processadores</span>
+                <p class="text-gray-400 text-sm">Intel & AMD</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/GPU.png" alt="Placa de Video" class="category-icon">
+            <!-- GPU -->
+            <div onclick="location.href='gpu.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/GPU.png" class="w-[75px]">
                 </div>
-                <span>Placa de Vídeo</span>
-                <p>NVIDIA e AMD</p>
+                <span class="text-xl font-bold">Placa de Vídeo</span>
+                <p class="text-gray-400 text-sm">NVIDIA e AMD</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/RAM.png" alt="Memória RAM" class="category-icon">
+            <!-- RAM -->
+            <div onclick="location.href='ram.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/RAM.png" class="w-[75px]">
                 </div>
-                <span>Memória RAM</span>
-                <p>DDR4 & DDR5</p>
+                <span class="text-xl font-bold">Memória RAM</span>
+                <p class="text-gray-400 text-sm">DDR4 & DDR5</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/SSD.png" alt="Armazenamento" class="category-icon">
+            <!-- SSD -->
+            <div onclick="location.href='ssd.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/SSD.png" class="w-[75px]">
                 </div>
-                <span>Armazenamento</span>
-                <p>SSD & HDD</p>
+                <span class="text-xl font-bold">Armazenamento</span>
+                <p class="text-gray-400 text-sm">SSD & HDD</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/Gabinete.png" alt="Gabinetes" class="category-icon">
+            <!-- GABINETE -->
+            <div onclick="location.href='gabinete.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/Gabinete.png" class="w-[75px]">
                 </div>
-                <span>Gabinetes</span>
-                <p>RGB & Gamer</p>
+                <span class="text-xl font-bold">Gabinetes</span>
+                <p class="text-gray-400 text-sm">RGB & Gamer</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/PlacaMae.png" alt="Placa Mãe" class="category-icon">
+            <!-- PLACA MÃE -->
+            <div onclick="location.href='placamae.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/PlacaMae.png" class="w-[75px]">
                 </div>
-                <span>Placa Mãe</span>
-                <p>ATX & mATX</p>
+                <span class="text-xl font-bold">Placa Mãe</span>
+                <p class="text-gray-400 text-sm">ATX & mATX</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/Perifericos.png" alt="Periféricos" class="category-icon">
+            <!-- PERIFÉRICOS -->
+            <div onclick="location.href='perifericos.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/Perifericos.png" class="w-[75px]">
                 </div>
-                <span>Periféricos</span>
-                <p>Logitech & Redragon</p>
+                <span class="text-xl font-bold">Periféricos</span>
+                <p class="text-gray-400 text-sm">Logitech & Redragon</p>
             </div>
 
-            <div class="category-card">
-                <div class="icon-wrapper">
-                    <img src="icons/Fans.png" alt="Fans" class="category-icon">
+            <!-- FANS -->
+            <div onclick="location.href='fans.html'"
+                class="flex flex-col items-center justify-center h-[240px] border-2 border-purple-600 rounded-lg p-6 cursor-pointer hover:bg-purple-700 hover:-translate-y-2 transition shadow-lg">
+                <div class="bg-gradient-to-br from-[#3b1f5c] to-[#5f28b3] p-3 rounded-xl mb-3">
+                    <img src="icons/Fans.png" class="w-[75px]">
                 </div>
-                <span>Fans</span>
-                <p>120mm & 140mm</p>
+                <span class="text-xl font-bold">Fans</span>
+                <p class="text-gray-400 text-sm">120mm & 140mm</p>
             </div>
 
         </div>
     </section>
 
-    <section class="destaques-section">
-        <h1 class="title-destaques">Destaques</h1>
+    <!-- DESTAQUES -->
+    <section class="text-center py-24 bg-gradient-to-b from-roxDark to-roxBg border-t-2 border-rox">
 
-        <div class="destaques">
+        <h1 class="text-3xl mb-10">Destaques</h1>
 
-            <div class="card-destaques">
-                <div class="discount-badge">-30%</div>
-                <div class="desq-wrapper">
-                    <img src="icons/RAM1.png" alt="RAM Kingston" class="desq-icon">
-                </div>
-                <h4>Memória RAM</h4>
-                <span>Kingston HyperX 16GB</span>
-                <p>DDR4, RGB, 3200MHz, 16GB</p>
-                <div class="price-area">
-                    <span class="old-price">R$ 1.099,90</span>
-                    <span class="new-price">R$ 769,90</span>
+        <div class="grid grid-cols-4 gap-10 px-24">
+
+            <!-- RAM -->
+            <div
+                class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-sm font-bold">-30%</div>
+                <img src="icons/RAM1.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Memória RAM</h4>
+                <span class="font-bold">Kingston HyperX 16GB</span>
+                <p class="text-gray-400 text-sm">DDR4, RGB</p>
+                <div class="mt-auto">
+                    <span class="line-through text-gray-500">R$ 1.099,90</span>
+                    <span class="block text-green-400 text-xl">R$ 769,90</span>
                 </div>
             </div>
 
-            <div class="card-destaques">
-                <div class="discount-badge">-35%</div>
-                <div class="desq-wrapper">
-                    <img src="icons/5700x.png" alt="Ryzen 5700x" class="desq-icon">
-                </div>
-                <h4>Processador</h4>
-                <span>Ryzen 5 5700x</span>
-                <p>8 núcleos, 16 threads, 4.6GHz </p>
-                <div class="price-area">
-                    <span class="old-price">R$ 1.999,90</span>
-                    <span class="new-price">R$ 1.299,90</span>
-                </div>
-            </div>
-
-            <div class="card-destaques">
-                <div class="discount-badge">-25%</div>
-                <div class="desq-wrapper">
-                    <img src="icons/4070msi.webp" alt="RTX 4070" class="desq-icon">
-                </div>
-                <h4>Placa de Vídeo</h4>
-                <span>RTX 4070 12GB</span>
-                <p>GDDR6X, Ray Tracing, DLSS 3</p>
-                <div class="price-area">
-                    <span class="old-price">R$ 4.999,90</span>
-                    <span class="new-price">R$ 3.749,90</span>
+            <!-- CPU -->
+            <div
+                class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-sm font-bold">-35%</div>
+                <img src="icons/5700x.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Processador</h4>
+                <span class="font-bold">Ryzen 5 5700x</span>
+                <p class="text-gray-400 text-sm">8 núcleos, 16 threads</p>
+                <div>
+                    <span class="line-through text-gray-500">R$ 1.999,90</span>
+                    <span class="block text-green-400 text-xl">R$ 1.299,90</span>
                 </div>
             </div>
 
-            <div class="card-destaques">
-                <div class="discount-badge">-35%</div>
-                <div class="desq-wrapper">
-                    <img src="icons/SSD1.png" alt="SSD Kingston" class="desq-icon">
+            <!-- GPU -->
+            <div
+                class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-sm font-bold">-25%</div>
+                <img src="icons/4070msi.webp" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Placa de Vídeo</h4>
+                <span class="font-bold">RTX 4070 12GB</span>
+                <p class="text-gray-400 text-sm">GDDR6X</p>
+                <div>
+                    <span class="line-through text-gray-500">R$ 4.999,90</span>
+                    <span class="block text-green-400 text-xl">R$ 3.749,90</span>
                 </div>
-                <h4>Armazenamento</h4>
-                <span>SSD Kingston 1TB</span>
-                <p>PCIe 4.0, NVMe M.2</p>
-                <div class="price-area">
-                    <span class="old-price">R$ 934,90</span>
-                    <span class="new-price">R$ 607,90</span>
+            </div>
+
+            <!-- SSD -->
+            <div
+                class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-sm font-bold">-35%</div>
+                <img src="icons/SSD1.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Armazenamento</h4>
+                <span class="font-bold">SSD Kingston 1TB</span>
+                <p class="text-gray-400 text-sm">NVMe</p>
+                <div>
+                    <span class="line-through text-gray-500">R$ 934,90</span>
+                    <span class="block text-green-400 text-xl">R$ 607,90</span>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <section class="hero2">
-        <h1>Compre seu PC Gamer Completo</h1>
-        <p>Ofertas especiais em PC's já montados</p>
-        <a href="#" class="btn-hero">Ver Kits Completos</a>
-    </section>
 
-    <footer class="footer">
-        <div class="footer-container">
+    <footer class="bg-[#111111] border-t-2 border-rox px-[100px] py-[60px] mt-20">
+
+        <div class="grid grid-cols-4 gap-12">
 
             <!-- Atendimento -->
-            <div class="footer-column">
-                <h3>Atendimento</h3>
-                <ul>
-                    <li><a href="#">Central de Ajuda</a></li>
-                    <li><a href="#">Trocas e Devoluções</a></li>
-                    <li><a href="#">Rastreamento</a></li>
+            <div>
+                <h3 class="text-rox mb-5 text-lg">Atendimento</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Central de
+                            Ajuda</a></li>
+                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Trocas e
+                            Devoluções</a></li>
+                    <li><a href="#"
+                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Rastreamento</a>
+                    </li>
                 </ul>
             </div>
 
             <!-- Institucional -->
-            <div class="footer-column">
-                <h3>Institucional</h3>
-                <ul>
-                    <li><a href="#">Sobre Nós</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Trabalhe Conosco</a></li>
+            <div>
+                <h3 class="text-rox mb-5 text-lg">Institucional</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Sobre
+                            Nós</a></li>
+                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Política de
+                            Privacidade</a></li>
+                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Trabalhe
+                            Conosco</a></li>
                 </ul>
             </div>
 
             <!-- Categorias -->
-            <div class="footer-column">
-                <h3>Categorias</h3>
-                <ul>
-                    <li><a href="#">Processadores</a></li>
-                    <li><a href="#">Placa de Vídeo</a></li>
-                    <li><a href="#">Periféricos</a></li>
+            <div>
+                <h3 class="text-rox mb-5 text-lg">Categorias</h3>
+                <ul class="space-y-3">
+                    <li><a href="processadores.html"
+                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Processadores</a>
+                    </li>
+                    <li><a href="gpu.html"
+                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Placa de Vídeo</a>
+                    </li>
+                    <li><a href="ram.html"
+                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Memória RAM</a>
+                    </li>
+                    <li><a href="ssd.html"
+                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">SSD</a></li>
                 </ul>
             </div>
 
-            <!-- Redes Sociais -->
-            <div class="footer-column">
-                <h3>Redes Sociais</h3>
-                <div class="social-icons">
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                    <a href="https://facebook.com" target="_blank">Facebook</a>
-                    <a href="https://twitter.com" target="_blank">Twitter</a>
+            <!-- Redes -->
+            <div>
+                <h3 class="text-rox mb-5 text-lg">Redes Sociais</h3>
+                <div class="flex flex-col gap-3">
+                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Instagram</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Facebook</a>
+                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Twitter</a>
                 </div>
             </div>
 
         </div>
 
-        <div class="footer-bottom">
-            <p>© 2026 RoxPC - Todos os direitos reservados.</p>
+        <!-- Linha inferior -->
+        <div class="text-center mt-10 pt-5 border-t border-gray-700 text-gray-500 text-sm">
+            © 2026 RoxPC - Todos os direitos reservados.
         </div>
-    </footer>
 
+    </footer>
 </body>
 
 </html>

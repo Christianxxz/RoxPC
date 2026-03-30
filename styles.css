@@ -1,4 +1,4 @@
-/* GERAL */
+GERAL
 body {
     margin: 0;
     background-color: #1a1919;
@@ -89,7 +89,7 @@ body {
 
 /* ÍCONES */
 .icons img {
-    width: 28px;
+    width: 35px;
     margin-left: 15px;
     filter: invert(100%);
     cursor: pointer;
@@ -311,7 +311,7 @@ body {
 }
 
 .desq-icon {
-  width: 120px;
+  width: 150px;
   height: auto;
   transition: transform 0.3s ease;
 }
