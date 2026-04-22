@@ -1,65 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Processadores</title>
+    <title>Processadores - RoxPC</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rox: "#9F5FFF",
+                        roxDark: "#231936",
+                        roxBg: "#1a1919",
+                        roxCard: "#341644"
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-    <!-- HERO DA CATEGORIA -->
-<section class="hero categoria-hero">
-    <h1>Processadores</h1>
-    <p>Escolha entre os melhores CPUs da Intel e AMD</p>
-</section>
 
-<!-- PRODUTOS -->
-<section class="destaques-section">
-    <h1 class="title-destaques">Processadores em Destaque</h1>
+<body class="bg-roxBg text-white font-sans">
 
-    <div class="destaques">
+    <!-- HEADER -->
+    <div id="navBar"></div>
 
-        <div class="card-destaques">
-            <div class="desq-wrapper">
-                <img src="icons/5700x.png" class="desq-icon">
+    <!-- HERO -->
+    <section class="text-center py-20 bg-roxCard border-b border-rox">
+        <h1 class="text-4xl font-bold text-rox">Processadores</h1>
+        <p class="text-gray-400 mt-3 text-lg">
+            Escolha entre os melhores CPUs da Intel e AMD
+        </p>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="text-center py-20 bg-gradient-to-b from-roxDark to-roxBg">
+
+        <h2 class="text-3xl mb-12">Produtos em Destaque</h2>
+
+        <div class="grid grid-cols-4 gap-10 px-24">
+
+            <!-- PRODUTO 1 -->
+            <div class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <img src="icons/5700x.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">AMD</h4>
+                <span class="font-bold text-lg">Ryzen 7 5700X</span>
+                <p class="text-gray-400 text-sm">8 núcleos, 16 threads</p>
+                <div class="mt-4">
+                    <span class="text-green-400 text-xl">R$ 1.299,90</span>
+                </div>
             </div>
-            <h4>AMD</h4>
-            <span>Ryzen 7 5700X</span>
-            <p>8 núcleos, 16 threads</p>
 
-            <div class="price-area">
-                <span class="new-price">R$ 1.299,90</span>
+            <!-- PRODUTO 2 -->
+            <div class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <img src="icons/i5.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Intel</h4>
+                <span class="font-bold text-lg">Core i5 12400F</span>
+                <p class="text-gray-400 text-sm">6 núcleos, 12 threads</p>
+                <div class="mt-4">
+                    <span class="text-green-400 text-xl">R$ 899,90</span>
+                </div>
             </div>
+
+            <!-- PRODUTO 3 -->
+            <div class="relative flex flex-col items-center border-2 border-purple-600 rounded-xl p-6 hover:bg-purple-700 hover:-translate-y-2 transition">
+                <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-sm font-bold">-20%</div>
+                <img src="icons/i7.png" class="w-[150px] mb-3">
+                <h4 class="text-rox text-sm">Intel</h4>
+                <span class="font-bold text-lg">Core i7 12700K</span>
+                <p class="text-gray-400 text-sm">Alto desempenho</p>
+                <div class="mt-4">
+                    <span class="line-through text-gray-500">R$ 2.299,90</span>
+                    <span class="block text-green-400 text-xl">R$ 1.839,90</span>
+                </div>
+            </div>
+
         </div>
 
-        <div class="card-destaques">
-            <div class="desq-wrapper">
-                <img src="icons/i5.png" class="desq-icon">
-            </div>
-            <h4>Intel</h4>
-            <span>Core i5 12400F</span>
-            <p>6 núcleos, 12 threads</p>
+    </section>
 
-            <div class="price-area">
-                <span class="new-price">R$ 899,90</span>
-            </div>
-        </div>
+    <!-- FOOTER -->
+    <div id="footer"></div>
 
-        <div class="card-destaques promo">
-            <div class="discount-badge">-20%</div>
-            <div class="desq-wrapper">
-                <img src="icons/i7.png" class="desq-icon">
-            </div>
-            <h4>Intel</h4>
-            <span>Core i7 12700K</span>
-            <p>Alto desempenho</p>
+    <!-- JS NAVBAR + FOOTER -->
+    <script>
+        // NAVBAR
+        fetch("navBar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navBar").innerHTML = data;
+            });
 
-            <div class="price-area">
-                <span class="old-price">R$ 2.299,90</span>
-                <span class="new-price">R$ 1.839,90</span>
-            </div>
-        </div>
+        // FOOTER
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+    </script>
 
-    </div>
-</section>
 </body>
+
 </html>

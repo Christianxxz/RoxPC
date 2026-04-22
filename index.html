@@ -27,34 +27,7 @@
 
 <body class="bg-roxBg text-white font-sans">
 
-    <!-- NAVBAR -->
-    <nav class="flex justify-between items-center bg-[#111] px-10 py-8 border-b-2 border-rox">
-
-        <div class="flex items-center gap-3">
-            <img src="icons/logo.png" class="w-[85px]">
-            <span class="text-rox text-2xl font-bold">RoxPC</span>
-        </div>
-
-        <div class="flex items-center bg-[#1a1a1a] px-3 py-1 rounded-full border border-rox">
-            <input class="bg-transparent outline-none text-white px-2 w-[230px]" placeholder="Buscar Produtos...">
-            <button class="bg-rox px-4 py-2 rounded-full hover:bg-purple-400 transition">
-                <img src="icons/lupa.png" class="hover:text-purple-900 w-8 invert cursor-pointer">
-            </button>
-        </div>
-
-        <ul class="flex gap-5">
-            <li><a href="#" class="hover:text-purple-700">Processadores</a></li>
-            <li><a href="#" class="hover:text-purple-700">Placas de Vídeo</a></li>
-            <li><a href="#" class="hover:text-purple-700">Memória RAM</a></li>
-            <li><a href="#" class="hover:text-purple-700">SSD</a></li>
-        </ul>
-
-        <div class="flex gap-4">
-            <img src="icons/usuario.png" class="w-8 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad]">
-            <img src="icons/carrinho.png" class="w-8 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad]">
-        </div>
-
-    </nav>
+    <div id="navBar"></div>
 
     <!-- HERO -->
     <section class="text-center py-16 bg-roxCard">
@@ -73,7 +46,6 @@
         </a>
     </section>
 
-    <!-- CATEGORIAS -->
     <!-- CATEGORIAS -->
     <section class="text-center py-24 bg-gradient-to-b from-roxCard to-roxDark border-t-2 border-rox">
         <h1 class="text-3xl mb-10">Categorias</h1>
@@ -229,74 +201,25 @@
         </div>
     </section>
 
+    <div id="footer"></div>
 
-    <footer class="bg-[#111111] border-t-2 border-rox px-[100px] py-[60px] mt-20">
 
-        <div class="grid grid-cols-4 gap-12">
+    <script>
+        // HEADER
+        fetch("navBar.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("navBar").innerHTML = data;
+            });
 
-            <!-- Atendimento -->
-            <div>
-                <h3 class="text-rox mb-5 text-lg">Atendimento</h3>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Central de
-                            Ajuda</a></li>
-                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Trocas e
-                            Devoluções</a></li>
-                    <li><a href="#"
-                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Rastreamento</a>
-                    </li>
-                </ul>
-            </div>
+        // FOOTER
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+    </script>
 
-            <!-- Institucional -->
-            <div>
-                <h3 class="text-rox mb-5 text-lg">Institucional</h3>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Sobre
-                            Nós</a></li>
-                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Política de
-                            Privacidade</a></li>
-                    <li><a href="#" class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Trabalhe
-                            Conosco</a></li>
-                </ul>
-            </div>
-
-            <!-- Categorias -->
-            <div>
-                <h3 class="text-rox mb-5 text-lg">Categorias</h3>
-                <ul class="space-y-3">
-                    <li><a href="processadores.html"
-                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Processadores</a>
-                    </li>
-                    <li><a href="gpu.html"
-                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Placa de Vídeo</a>
-                    </li>
-                    <li><a href="ram.html"
-                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">Memória RAM</a>
-                    </li>
-                    <li><a href="ssd.html"
-                            class="text-gray-400 text-sm hover:text-white hover:pl-1 transition-all">SSD</a></li>
-                </ul>
-            </div>
-
-            <!-- Redes -->
-            <div>
-                <h3 class="text-rox mb-5 text-lg">Redes Sociais</h3>
-                <div class="flex flex-col gap-3">
-                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Instagram</a>
-                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Facebook</a>
-                    <a href="#" class="text-gray-400 text-sm hover:text-white transition">Twitter</a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Linha inferior -->
-        <div class="text-center mt-10 pt-5 border-t border-gray-700 text-gray-500 text-sm">
-            © 2026 RoxPC - Todos os direitos reservados.
-        </div>
-
-    </footer>
 </body>
 
 </html>
