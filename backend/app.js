@@ -9,5 +9,6 @@ app.use(express.json());
 app.use("/produtos", require("./routes/produtoRoutes"));
 app.use("/categorias", require("./routes/categoriaRoutes"));
 app.use("/promocoes", require("./routes/promocaoRoutes"));
+app.use("/icons", express.static("icons"));
 
 module.exports = app;
