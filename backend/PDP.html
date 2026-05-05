@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Produto - RoxPC</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+    background: radial-gradient(circle at top, #2d1b4d, #0f0f0f);
+}
+</style>
+
+</head>
+
+<body class="text-white p-10">
+
+<div class="max-w-6xl mx-auto grid grid-cols-2 gap-12">
+
+<!-- IMAGEM -->
+<div class="bg-white/5 p-10 rounded-xl backdrop-blur border border-white/10 flex justify-center items-center">
+<img id="img" class="w-80 object-contain">
+</div>
+
+<!-- INFO -->
+<div>
+
+<h1 id="nome" class="text-3xl font-bold mb-4"></h1>
+
+<p id="desc" class="text-gray-400 mb-6"></p>
+
+<p id="preco" class="text-green-400 text-3xl font-bold mb-6"></p>
+
+<!-- QUANTIDADE -->
+<div class="mb-6">
+<label class="text-gray-400 text-sm">Quantidade</label>
+<input id="qtd" type="number" value="1" min="1"
+class="w-24 p-2 text-black rounded mt-2">
+</div>
+
+<!-- BOTÕES -->
+<div class="flex gap-4">
+
+<button onclick="add()"
+class="flex-1 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:scale-105 transition font-bold">
+Adicionar ao carrinho
+</button>
+
+<button onclick="comprar()"
+class="flex-1 py-3 rounded-lg border border-purple-500 hover:bg-purple-600 transition font-bold">
+Comprar agora
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+const API="http://localhost:8080";
+const id = new URLSearchParams(location.search).get("id");
+
+// carregar produto
+fetch(`${API}/produtos/${id}`)
+.then(r=>r.json())
+.then(p=>{
+img.src = p.imagem_url;
+nome.innerText = p.nome;
+desc.innerText = p.descricao;
+preco.innerText = "R$ " + p.preco_final;
+});
+
+// adicionar ao carrinho
+function add(){
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+if(!user){
+alert("Faça login primeiro");
+return location.href = "login.html";
+}
+
+fetch(`${API}/carrinho`, {
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body: JSON.stringify({
+usuario_id: user.id,
+produto_id: id,
+quantidade: qtd.value
+})
+})
+.then(()=> alert("Produto adicionado ao carrinho"));
+}
+
+// comprar direto
+function comprar(){
+add();
+setTimeout(()=>{
+location.href="carrinho.html";
+}, 300);
+}
+</script>
+
+</body>
+</html>

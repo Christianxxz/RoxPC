@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Produtos - RoxPC</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+    background: radial-gradient(circle at top, #2d1b4d, #0f0f0f);
+}
+</style>
+
+</head>
+
+<body class="text-white">
+
+<section class="p-10">
+
+<h1 class="text-4xl mb-10 text-center font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+Produtos
+</h1>
+
+<div id="produtos" class="grid grid-cols-4 gap-8"></div>
+
+</section>
+
+<script>
+const API="http://localhost:8080";
+
+fetch(`${API}/produtos`)
+.then(r=>r.json())
+.then(lista=>{
+
+lista.forEach(p=>{
+
+produtos.innerHTML += `
+<div onclick="ver(${p.id})"
+class="cursor-pointer p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur hover:scale-105 transition shadow-lg">
+
+<img src="${p.imagem_url}" class="h-32 mx-auto mb-4 object-contain">
+
+<h2 class="text-center font-bold">${p.nome}</h2>
+
+<p class="text-center text-green-400 mt-2 text-lg">
+R$ ${p.preco_final}
+</p>
+
+</div>
+`;
+
+});
+
+});
+
+function ver(id){
+location.href = `produto.html?id=${id}`;
+}
+</script>
+
+</body>
+</html>

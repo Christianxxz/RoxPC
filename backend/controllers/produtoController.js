@@ -9,8 +9,11 @@ exports.listar = (req, res) => {
 
 exports.buscarPorId = (req, res) => {
     Produto.buscarPorId(req.params.id, (err, result) => {
-        if (err) return res.status(500).json(err);
-        res.json(result[0]);
+        if (result.length === 0) {
+    return res.status(404).json({ erro: "Produto não encontrado" });
+}
+
+res.json(result[0]);
     });
 };
 
