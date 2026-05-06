@@ -23,3 +23,17 @@ exports.buscarPorCategoria = (req, res) => {
         res.json(result);
     });
 };
+
+exports.buscarPorNome = (req, res) => {
+
+    const nome = req.params.nome;
+
+    Produto.buscarPorNome(nome, (err, results) => {
+
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(results);
+    });
+};

@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoxPC</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="icons/logo.png" type="image/png">
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -16,51 +19,211 @@
 
         <!-- LOGO -->
         <div class="flex items-center gap-3">
-            <a href="index.html">
-                <img src="icons/logo.png" alt="Logo" class="w-[70px]">
+            <a href="index.html" class="flex items-center gap-3">
+
+                <img src="icons/logo.png"
+                     alt="Logo"
+                     class="w-[70px]">
+
                 <span class="text-purple-500 text-2xl font-bold tracking-wide">
                     RoxPC
                 </span>
+
             </a>
         </div>
 
         <!-- SEARCH -->
-        <div class="flex items-center bg-[#1a1a1a] px-4 py-2 rounded-full border border-purple-600 w-[300px]">
+        <div class="relative">
 
-            <input type="text" placeholder="Buscar produtos..."
-                class="bg-transparent outline-none text-white w-full text-sm">
+            <div class="flex items-center bg-[#1a1a1a] px-4 py-2 rounded-full border border-purple-600 w-[350px]">
 
-            <button class="ml-2 bg-purple-600 p-2 rounded-full hover:bg-purple-500 transition">
-                <img src="icons/lupa.png" class="w-4 invert">
-            </button>
+                <input
+                    type="text"
+                    id="pesquisa"
+                    placeholder="Buscar produtos..."
+                    class="bg-transparent outline-none text-white w-full text-sm">
+
+                <button id="btnPesquisa"
+                    class="ml-2 bg-purple-600 p-2 rounded-full hover:bg-purple-500 transition">
+
+                    <img src="icons/lupa.png"
+                         class="w-4 invert">
+
+                </button>
+
+            </div>
+
+            <!-- RESULTADOS -->
+            <div id="resultadoPesquisa"
+                 class="absolute top-[60px] left-0 w-full bg-[#1a1a1a] border border-purple-600 rounded-xl hidden z-50 max-h-[400px] overflow-y-auto">
+            </div>
 
         </div>
+
         <!-- MENU -->
         <ul class="flex gap-6">
-            <li><a href="processadores.html" class="hover:text-purple-500 transition">Processadores</a></li>
-            <li><a href="gpu.html" class="hover:text-purple-500 transition">Placas de Vídeo</a></li>
-            <li><a href="ram.html" class="hover:text-purple-500 transition">Memória RAM</a></li>
-            <li><a href="ssd.html" class="hover:text-purple-500 transition">SSD</a></li>
+            <li>
+                <a href="processadores.html"
+                   class="hover:text-purple-500 transition">
+                    Processadores
+                </a>
+            </li>
+
+            <li>
+                <a href="gpu.html"
+                   class="hover:text-purple-500 transition">
+                    Placas de Vídeo
+                </a>
+            </li>
+
+            <li>
+                <a href="ram.html"
+                   class="hover:text-purple-500 transition">
+                    Memória RAM
+                </a>
+            </li>
+
+            <li>
+                <a href="ssd.html"
+                   class="hover:text-purple-500 transition">
+                    SSD
+                </a>
+            </li>
         </ul>
 
         <!-- ICONS -->
         <div class="flex items-center gap-4">
+
             <a href="login.html">
-                <img src="icons/usuario.png" alt="Usuário"
-                    class="w-9 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad] transition">
+                <img src="icons/usuario.png"
+                     alt="Usuário"
+                     class="w-9 invert cursor-pointer hover:drop-shadow-[0_0_6px_#4c0bad] transition">
             </a>
 
             <div class="relative">
+
                 <a href="carrinho.html">
-                    <img src="icons/carrinho.png" class="w-9 invert cursor-pointer">
+                    <img src="icons/carrinho.png"
+                         class="w-9 invert cursor-pointer">
                 </a>
+
                 <span class="absolute -top-2 -right-2 bg-purple-600 text-xs px-2 py-[2px] rounded-full">
                 </span>
+
             </div>
 
         </div>
 
     </nav>
+
+    <script>
+
+        const inputPesquisa = document.getElementById("pesquisa");
+        const resultadoPesquisa = document.getElementById("resultadoPesquisa");
+        const btnPesquisa = document.getElementById("btnPesquisa");
+
+        let timeout;
+
+        // PESQUISAR AO DIGITAR
+        inputPesquisa.addEventListener("keyup", () => {
+
+            clearTimeout(timeout);
+
+            timeout = setTimeout(() => {
+
+                const valor = inputPesquisa.value.trim();
+
+                // LIMPAR SE VAZIO
+                if (valor === "") {
+
+                    resultadoPesquisa.innerHTML = "";
+                    resultadoPesquisa.classList.add("hidden");
+
+                    return;
+                }
+
+                fetch(`http://localhost:8080/produtos/buscar/${valor}`)
+                    .then(res => res.json())
+                    .then(produtos => {
+
+                        resultadoPesquisa.innerHTML = "";
+
+                        // SEM RESULTADOS
+                        if (produtos.length === 0) {
+
+                            resultadoPesquisa.innerHTML = `
+                                <div class="p-4 text-gray-400">
+                                    Nenhum produto encontrado
+                                </div>
+                            `;
+
+                            resultadoPesquisa.classList.remove("hidden");
+
+                            return;
+                        }
+
+                        // RENDERIZAR RESULTADOS
+                        produtos.forEach(produto => {
+
+                            resultadoPesquisa.innerHTML += `
+
+                                <a href="produto.html?id=${produto.id}"
+                                   class="flex items-center gap-4 p-4 hover:bg-purple-700 transition border-b border-[#333]">
+
+                                    <img src="${produto.imagem_url}"
+                                         class="w-14 h-14 object-contain">
+
+                                    <div class="flex flex-col">
+
+                                        <span class="font-bold text-sm">
+                                            ${produto.nome}
+                                        </span>
+
+                                        <span class="text-green-400 text-sm">
+                                            R$ ${produto.preco_promocao}
+                                        </span>
+
+                                    </div>
+
+                                </a>
+                            `;
+                        });
+
+                        resultadoPesquisa.classList.remove("hidden");
+
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    });
+
+            }, 400);
+
+        });
+
+        // BOTÃO DE PESQUISA
+        btnPesquisa.addEventListener("click", () => {
+
+            const valor = inputPesquisa.value.trim();
+
+            if (valor !== "") {
+                window.location.href = `pesquisa.html?busca=${valor}`;
+            }
+
+        });
+
+        // FECHAR RESULTADOS AO CLICAR FORA
+        document.addEventListener("click", (e) => {
+
+            if (!resultadoPesquisa.contains(e.target) &&
+                !inputPesquisa.contains(e.target)) {
+
+                resultadoPesquisa.classList.add("hidden");
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>

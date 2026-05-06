@@ -68,4 +68,17 @@ buscarDestaques: (callback) => {
 
 };
 
+exports.buscarPorNome = (nome, callback) => {
+
+    const sql = `
+        SELECT *
+        FROM produtos
+        WHERE nome LIKE ?
+    `;
+
+    db.query(sql, [`%${nome}%`], callback);
+};
+
+
+
 module.exports = Produto;
